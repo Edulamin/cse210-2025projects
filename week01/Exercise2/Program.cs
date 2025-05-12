@@ -1,6 +1,7 @@
 using System;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 
 class Program
 {
@@ -37,7 +38,31 @@ class Program
             letter = "F";
         }
 
-        Console.WriteLine($"Your percentage corresponds to the letter {letter}");
+        
+        // Stretch Challenge Part:
+
+        string signal = "";
+        float lastNumber = gradePercentage % 10;
+        
+        if (gradePercentage < 93 && letter != "F")
+        {
+            if (lastNumber >= 7)
+            {
+                signal = "+";
+            }
+            else if (lastNumber < 3)
+            {
+                signal = "-";
+            }
+        }
+        else
+        {
+            signal = "";
+        }
+
+        //Print Messages Part:
+
+        Console.WriteLine($"Your percentage corresponds to {letter}{signal}");
 
         if (gradePercentage >= 70)
         {
@@ -47,5 +72,7 @@ class Program
         {
             Console.WriteLine("Sorry, you didn't pass this time. Try doing it again!");
         }
-    }
+
+    }   
+
 }
